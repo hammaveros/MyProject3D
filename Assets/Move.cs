@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    void Update(){
-        if (Input.anyKeyDown)
-            Debug.Log("key 입력");
+    void Start()
+    {
+        //int number = 4; //scala
+    }
 
-        if (Input.anyKey)
-            Debug.Log("key 입력 진행");
 
-        if (Input.GetKey(KeyCode.Return))
-            Debug.Log("Enter");
+    void Update()
+    {
+        // 증감
+        // Vector3 vec = new Vector3(
+        //     Input.GetAxis("Horizontal"),
+        //     Input.GetAxis("Vertical")
+        //     ,0); //vector
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-            Debug.Log("왼쪽 이동");
-
-        if (Input.GetKey(KeyCode.RightArrow))
-            Debug.Log("오른쪽 이동");
+        Vector3 vec = new Vector3(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
+            ,0); //vector
+        
+        transform.Translate(vec);   //이동 
     }
 }
 
