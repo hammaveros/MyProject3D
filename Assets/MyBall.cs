@@ -1,9 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MyBall : MonoBehaviour
 {
 
-    //코드 흐름은 선언 > 초기화 > 호출
     Rigidbody rigidBody;
     void Start()
     {
@@ -12,7 +12,6 @@ public class MyBall : MonoBehaviour
         //rigidBody.linearVelocity = new Vector3(2,4,3);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         //rigidBody.linearVelocity = new Vector3(2,4,3);
@@ -32,7 +31,14 @@ public class MyBall : MonoBehaviour
         rigidBody.AddForce(vec, ForceMode.Impulse);
 
         // 회전력
-        rigidBody.AddTorque(Vector3.down);
-       
+        //rigidBody.AddTorque(Vector3.down);
     }
+
+        
+    private void OnTriggerStay(Collider other){
+        if(other.name == "Cube")
+            rigidBody.AddForce(Vector3.up * 15, ForceMode.Impulse);
+            
+    }
+       
 }
